@@ -61,6 +61,7 @@
             <input
               class="input-blueprint"
               type="email"
+              id="email"
               placeholder="Email Address"
               required
             />
@@ -98,8 +99,36 @@
     <script>
       const input = document.querySelectorAll(".input-blueprint");
       const btn = document.querySelector(".submit-btn");
+      const email = document.getElementById("email");
+      const eRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      // const check
+      const checkEmail = function () {
+        if (eRegex.test(email.value)) {
+          email.classList.remove("input-error");
+          email.closest(".input-container").querySelector("em").style.display =
+            "none";
+        } else {
+          email.classList.add("input-error");
+          email.closest(".input-container").querySelector("em").style.display =
+            "block";
+        }
+      };
+
+      const checkInput = function () {
+        input.forEach((inp) => {
+          if (inp.checkValidity() && inp.type !== "email") {
+            inp.classList.remove("input-error");
+            inp.closest(".input-container").querySelector("em").style.display =
+              "none";
+          }
+        });
+      };
 
       btn.addEventListener("click", function (e) {
+        e.preventDefault();
+        checkInput();
+        checkEmail();
         input.forEach((inp) => {
           if (!inp.checkValidity()) {
             e.preventDefault();
@@ -108,8 +137,6 @@
             inp.classList.add("input-error");
           }
         });
-
-        console.log(input[0].closest("form"));
         input[0].closest("form").classList.add("grow-form");
       });
     </script>

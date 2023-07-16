@@ -140,7 +140,7 @@ button {
 }
 
 button:hover {
-  transform: translateY(-5px);
+  transform: translateY(-4px);
   box-shadow: 0 5px 0 0 rgb(80, 173, 122);
 }
 
@@ -154,7 +154,7 @@ button:visited {
 .disclaimer {
   text-align: center;
   font-size: calc(10rem / 16);
-  margin-top: -10px;
+  /* margin-top: -10px; */
   font-weight: 700;
   color: rgb(126, 126, 126);
 }
