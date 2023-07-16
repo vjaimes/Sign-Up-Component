@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Frontend Mentor | Intro component with sign up form</title>
+  </head>
+  <body>
+    <main class="container">
+      <header>
+        <h1>
+          Learn to code by <br />
+          watching others
+        </h1>
+        <p>
+          See how experienced developers solve problems in real-time. Watching
+          scripted tutorials is great, but understanding how developers think is
+          invaluable.
+        </p>
+      </header>
+      <section>
+        <div class="trial">Try it free for 7 days then $20/mo.</div>
+        <form class="">
+          <div class="input-container">
+            <input
+              class="input-blueprint"
+              type="text"
+              placeholder="First name"
+              required
+            />
+            <em>First name cannot be empty</em>
+          </div>
+          <div class="input-container">
+            <input
+              class="input-blueprint"
+              type="text"
+              placeholder="Last name"
+              required
+            />
+            <em>Last name cannot be empty</em>
+          </div>
+          <div class="input-container">
+            <input
+              class="input-blueprint"
+              type="email"
+              placeholder="Email Address"
+              required
+            />
+            <em>Please enter a valid email</em>
+          </div>
+          <div class="input-container">
+            <input
+              class="input-blueprint"
+              type="password"
+              placeholder="Password"
+              required
+            />
+            <em>Password cannot be empty</em>
+          </div>
+          <button class="submit-btn" type="submit">
+            Claim your free trial
+          </button>
+          <span class="disclaimer">
+            By clicking the button, you are agreeing to ourTerms and Services
+            <strong>Terms and Services</strong>
+          </span>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <p class="attribution">
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+          >Frontend Mentor</a
+        >. Coded by <a href="#">vjaimes</a>.
+      </p>
+    </footer>
+
+    <script>
+      const input = document.querySelectorAll(".input-blueprint");
+      const btn = document.querySelector(".submit-btn");
+
+      btn.addEventListener("click", function (e) {
+        input.forEach((inp) => {
+          if (!inp.checkValidity()) {
+            e.preventDefault();
+            inp.closest(".input-container").querySelector("em").style.display =
+              "block";
+            inp.classList.add("input-error");
+          }
+        });
+
+        console.log(input[0].closest("form"));
+        input[0].closest("form").classList.add("grow-form");
+      });
+    </script>
+  </body>
+</html>
